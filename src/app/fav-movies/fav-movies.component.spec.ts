@@ -33,7 +33,7 @@ describe('FavMoviesComponent', () => {
     fixture = TestBed.createComponent(FavMoviesComponent);
     component = fixture.componentInstance;
     movieService = TestBed.inject(MovieService);
-    spyOn(movieService,'getMovies$').and.returnValue(of(favoriteMoviesStub))
+    spyOn(movieService,'getMovies$').and.returnValue(of(favoriteMoviesStub));
 /*
     fixture.detectChanges(); */
   });

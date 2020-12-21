@@ -22,4 +22,10 @@ describe('FavMovieComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have a title', () => {
+    // component.title = 'Test Title';
+
+    expect(component.title).toBe('Mis Favoritas');
+  });
 });

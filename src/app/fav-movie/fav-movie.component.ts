@@ -8,6 +8,8 @@ import { Movie } from '../shared/interfaces/movie';
 })
 export class FavMovieComponent implements OnInit {
 
+  title = 'Mis Favoritas';
+
   @Input() favoriteMovie: Movie;
 
   constructor() { }
