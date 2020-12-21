@@ -22,4 +22,15 @@ describe('FavMovieComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should show movie title',()=>{
+
+    component.favoriteMovie = {title: 'Cualquier cosa'};
+
+    fixture.detectChanges();
+    let divElement = fixture.nativeElement.querySelector('div');
+
+    expect(divElement.textContent).toContain('Cualquier cosa');
+  })
+
 });

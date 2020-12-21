@@ -16,7 +16,7 @@ export class MovieService {
     return this.http.get<Movie[]>(environment.api_url);
   }
 
-  createMovie$(movie:Movie[]):Observable<Movie>{
+  createMovie$(movie:Movie):Observable<Movie>{
 
     return this.http.post<Movie>(environment.api_url,movie,{headers:{'content-type':'application/json'}})
   }

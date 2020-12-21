@@ -4,7 +4,8 @@ import { Movie } from '../interfaces/movie';
 import { environment } from '../../../environments/environment';
 
 import { MovieService } from './movie.service';
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
+
 
 
 const favoriteMoviesStub = [
@@ -24,6 +25,10 @@ describe('MovieService', () => {
     service = TestBed.inject(MovieService);
     http    = TestBed.inject(HttpTestingController);
   });
+
+  afterEach(()=>{
+    http.verify();
+  })
 
   it('should be created', () => {
     expect(service).toBeTruthy();
@@ -66,5 +71,23 @@ describe('MovieService', () => {
     expect(result).toBeUndefined();
     expect(errorAPI).toBeDefined();
 
+  });
+
+  it('should create a movie',()=>{
+
+    const mockMovie:Movie = {title: 'No country for old men'};
+
+    service.createMovie$({title: 'No country for old men'}).subscribe(
+      data => expect(data.title).toEqual('No country for old men')
+    )
+
+    const req = http.expectOne(environment.api_url);
+
+    expect(req.request.method).toEqual('POST');
+    expect(req.request.headers.get('content-type')).toBe('application/json');
+
+    req.flush(mockMovie);
+
   })
+
 });
